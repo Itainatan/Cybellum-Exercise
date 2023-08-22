@@ -1,7 +1,9 @@
 import { useLoginMutation } from 'api/auth/auth';
 import { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { setUser } from 'slices/user/userSlice';
 import { FormValues } from './types';
 
 export function useLogin() {
@@ -16,6 +18,7 @@ export function useLogin() {
   } = useForm<FormValues>();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [login] = useLoginMutation();
 
@@ -25,16 +28,16 @@ export function useLogin() {
     try {
       const { email, password } = getValues();
       const data = await login({ email, password }).unwrap();
-      console.log(data);
+      dispatch(setUser(data));
       navigate('/');
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setError('password', {
         type: 'manual',
         message: 'Dont Forget Your Username Should Be Cool!',
       });
     }
-  }, [getValues, login, navigate, setError]);
+  }, [dispatch, getValues, login, navigate, setError]);
 
   return {
     register,
