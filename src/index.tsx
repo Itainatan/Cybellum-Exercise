@@ -32,3 +32,15 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+declare module '@mui/material/styles' {
+  interface TypographyVariantsOptions {
+    subtitle3?: React.CSSProperties;
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    subtitle3: true;
+  }
+}

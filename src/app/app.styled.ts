@@ -23,7 +23,4 @@ const CardMedia = styled(CardMediaMui)(({ theme }) => {
   };
 }) as typeof CardMediaMui;
 
-export default {
-  CardMedia,
-  Box,
-};
+export { CardMedia, Box };

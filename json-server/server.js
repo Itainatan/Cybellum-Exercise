@@ -1,6 +1,7 @@
 require('dotenv').config();
 const jsonServer = require('json-server');
 const path = require('path');
+const cors = require('cors')
 const server = jsonServer.create();
 
 const router = jsonServer.router(path.join(__dirname, './db.json'));
@@ -8,7 +9,7 @@ const auth = require('json-server-auth');
 const middlewares = jsonServer.defaults();
 
 server.db = router.db;
-const JSON_SERVER_PORT = process.env.JSON_SERVER_PORT || 7000;
+const JSON_SERVER_PORT = process.env.JSON_SERVER_PORT || 7004;
 
 const rules = auth.rewriter({
   // Permission rules
@@ -17,6 +18,7 @@ const rules = auth.rewriter({
 });
 
 server.use(middlewares);
+server.use(cors());
 server.use(rules);
 server.use(auth);
 server.use(router);
