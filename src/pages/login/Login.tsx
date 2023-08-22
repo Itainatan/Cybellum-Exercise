@@ -8,6 +8,10 @@ import { useLogin } from './hooks';
 export default function Login() {
   const { register, onSubmit, errors, } = useLogin()
 
+  // I build a mui theme for cybellum 
+  // I used variants and colors for the typography, and a style for buttons an text fields
+  // For Box i used the props insted of create a styled component
+  // i tried to make the ui responsive as much as can by the figma
 
   return (
     <Box display="flex" flexDirection="row">
@@ -20,15 +24,20 @@ export default function Login() {
           </Typography>
           <Box sx={{ width: '65%' }}>
             <form onSubmit={onSubmit}>
-              <TextField label="Username" error={!!errors.password} {...register("email", {
-                required: true, pattern: {
-                  value: /\S+@\S+\.\S+/,
-                  message: "Entered value does not match email format"
-                }
-              })} />
-              <TextField type='password' label="Password" sx={{ mt: 3.5, mb: 0.5 }} error={!!errors.password} {...register("password", {
-                required: true,
-              })} />
+              <TextField
+                label="Username"
+                error={!!errors.password}
+                {...register("email", {
+                  required: true
+                })} />
+              <TextField
+                type='password'
+                label="Password"
+                sx={{ mt: 3.5, mb: 0.5 }}
+                error={!!errors.password}
+                {...register("password", {
+                  required: true,
+                })} />
               <Typography variant="body3" color="error.light">{errors.password?.message}</Typography>
               <Button>
                 <Typography variant='subtitle3' color='primary.light'>
@@ -53,6 +62,7 @@ export default function Login() {
             </Button>
           ))}
         </Box>
+
       </Box>
       <Box flex="1" sx={{ pr: "3%" }}>
         <CardMedia component="img" alt="Digital Twins" image={monitor} sx={{ mt: 4 }} />

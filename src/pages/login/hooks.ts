@@ -1,5 +1,5 @@
 import { useLoginMutation } from 'api/auth/auth';
-import { useCallback, useEffect } from 'react';
+import { useCallback, } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +26,9 @@ export function useLogin() {
     try {
       clearErrors()
       const { email, password } = getValues();
+
       const data = await login({ email, password }).unwrap();
+      
       dispatch(setUser(data));
       navigate('/');
     } catch (error) {

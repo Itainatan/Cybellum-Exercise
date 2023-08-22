@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "email": "itai08425@gmail.com",
-      "password": "$2a$10$e.U2jMG3nsicfLufV8zYWOiO1VXBX3so8sI1wo2WkGaXFfILyJIDO",
+      "email": "fake-user@mail.com",
+      "password": "$2a$10$C/9GcMZIKECVjgSk9cY7bOKJ3SElCdFcVg28HEF0fV9ahSFlqHlLq",
       "id": 1
     }
   ],
