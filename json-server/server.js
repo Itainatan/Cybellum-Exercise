@@ -9,7 +9,7 @@ const auth = require('json-server-auth');
 const middlewares = jsonServer.defaults();
 
 server.db = router.db;
-const JSON_SERVER_PORT = process.env.JSON_SERVER_PORT || 7004;
+const JSON_SERVER_PORT = process.env.JSON_SERVER_PORT || 8000;
 
 const rules = auth.rewriter({
   // Permission rules
