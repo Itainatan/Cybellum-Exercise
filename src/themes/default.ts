@@ -28,6 +28,14 @@ const theme = createTheme({
       lineHeight: '20px',
       letterSpacing: '0.1px',
     },
+    body3: {
+      fontFamily: 'Noto Sans',
+      fontSize: '12px',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      lineHeight: '16px',
+      letterSpacing: '0.4px',
+    },
   },
   components: {
     MuiCssBaseline: {
@@ -91,10 +99,8 @@ const theme = createTheme({
           lineHeight: '24px',
           letterSpacing: '0.25px',
           ':-webkit-autofill': {
-              // Apply styles for autofill in Webkit-based browsers
-              // For example:
-              transition: 'background-color 5000s ease-in-out 0s', // Override autofill background transition
-              boxShadow: '0 0 0px 1000px transparent', // Override autofill background color
+              transition: 'background-color 5000s ease-in-out 0s', 
+              boxShadow: '0 0 0px 1000px transparent', 
           }
         }
       },
@@ -146,6 +152,7 @@ const theme = createTheme({
     },
     error: {
       main: '#ff0000',
+      light: '#BA1A1A',
     },
     background: {
       default: '#e0e0e0',

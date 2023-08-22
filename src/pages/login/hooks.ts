@@ -22,10 +22,9 @@ export function useLogin() {
 
   const [login] = useLoginMutation();
 
-  useEffect(() => {}, [setError]);
-
   const onSubmit = useCallback(async () => {
     try {
+      clearErrors()
       const { email, password } = getValues();
       const data = await login({ email, password }).unwrap();
       dispatch(setUser(data));
@@ -34,10 +33,10 @@ export function useLogin() {
       console.log(error);
       setError('password', {
         type: 'manual',
-        message: 'Dont Forget Your Username Should Be Cool!',
+        message: 'The email or password you entered don’t match',
       });
     }
-  }, [dispatch, getValues, login, navigate, setError]);
+  }, [clearErrors, dispatch, getValues, login, navigate, setError]);
 
   return {
     register,

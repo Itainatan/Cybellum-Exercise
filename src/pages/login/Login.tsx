@@ -6,7 +6,7 @@ import { bottomLinks } from './constants';
 import { useLogin } from './hooks';
 
 export default function Login() {
-  const { register, onSubmit, setValue } = useLogin()
+  const { register, onSubmit, errors, } = useLogin()
 
 
   return (
@@ -20,15 +20,16 @@ export default function Login() {
           </Typography>
           <Box sx={{ width: '65%' }}>
             <form onSubmit={onSubmit}>
-              <TextField label="Username" {...register("email", {
+              <TextField label="Username" error={!!errors.password} {...register("email", {
                 required: true, pattern: {
                   value: /\S+@\S+\.\S+/,
                   message: "Entered value does not match email format"
                 }
               })} />
-              <TextField type='password' label="Password" sx={{ mt: 3.5 }} {...register("password", {
+              <TextField type='password' label="Password" sx={{ mt: 3.5, mb: 0.5 }} error={!!errors.password} {...register("password", {
                 required: true,
               })} />
+              <Typography variant="body3" color="error.light">{errors.password?.message}</Typography>
               <Button>
                 <Typography variant='subtitle3' color='primary.light'>
                   Forgot your password?
