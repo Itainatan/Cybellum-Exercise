@@ -1,9 +1,11 @@
-import { Button, CardMedia, TextField, Typography } from '@mui/material';
+import { Button, CardMedia, InputAdornment, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import cybellumSign from 'assets/images/login/cybellum-sign.svg';
 import monitor from 'assets/images/login/imac-dig-twins.png';
 import { bottomLinks } from './constants';
 import { useLogin } from './hooks';
+import { Error } from '@mui/icons-material';
+import { IconButton } from './login.styled'
 
 export default function Login() {
   const { register, onSubmit, errors, } = useLogin()
@@ -27,6 +29,15 @@ export default function Login() {
               <TextField
                 label="Username"
                 error={!!errors.password}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton>
+                        {!!errors.password?.message && <Error />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
                 {...register("email", {
                   required: true
                 })} />
@@ -35,6 +46,15 @@ export default function Login() {
                 label="Password"
                 sx={{ mt: 3.5, mb: 0.5 }}
                 error={!!errors.password}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton>
+                        {!!errors.password?.message && <Error />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
                 {...register("password", {
                   required: true,
                 })} />
